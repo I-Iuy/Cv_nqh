@@ -1,0 +1,114 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="font-roboto bg-[#f5e1c8] p-6">
+
+    <div class="max-w-4xl mx-auto mb-4">
+        <button onclick="downloadCV()" class="bg-[#8b5e3b] hover:bg-[#c49a6c] text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-download mr-2"></i>Tải CV
+        </button>
+    </div>
+
+    <div id="cv-content" class="max-w-4xl mx-auto border border-[#8b5e3b] p-6 bg-[#fff8ec] shadow-lg rounded-lg">
+        <div class="flex items-center">
+            <div class="w-1/3">
+                <img alt="Profile picture placeholder" class="rounded-full mx-auto border-4 border-[#8b5e3b]" height="150" 
+                    src="1.jpg" width="150" />
+            </div>
+            <div class="w-2/3 pl-4">
+                <div class="bg-[#8b5e3b] text-white p-2 rounded-lg text-center">
+                    <h1 class="font-bold text-lg"><i class="fas fa-user"></i> Nguyễn Quốc Huy</h1>
+                </div>
+                <div class="mt-4">
+                    <h2 class="text-[#8b5e3b] font-bold"><i class="fas fa-id-badge"></i> TÓM TẮT BẢN THÂN</h2>
+                    <p class="text-gray-700">Tôi là một nhân viên bán thời gian với nhiều vị trí khác nhau như phục vụ, pha chế, thu ngân. Tôi đã có kinh nghiệm làm việc 1 năm tại các quán cafe, quán trà sữa.</p>
+                    <div class="flex items-center mt-2 text-[#8b5e3b]">
+                        <i class="fas fa-phone"></i>
+                        <span class="ml-2 truncate">0974869783</span>
+                    </div>
+                    <div class="flex items-center mt-2 text-[#8b5e3b]">
+                        <i class="fas fa-envelope"></i>
+                        <span class="ml-2 truncate">quochuynguyen00397@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-dotted border-[#8b5e3b]" />
+        <div class="grid grid-cols-3 gap-4">
+            <div>
+                <div class="bg-[#c49a6c] p-2 rounded-lg text-center text-white">
+                    <h2 class="font-bold"><i class="fas fa-star"></i> ƯU ĐIỂM</h2>
+                </div>
+                <div class="mt-4 text-gray-700">
+                    <p><i class="fas fa-check-circle"></i> Ngoại hình ưa nhìn</p>
+                    <p><i class="fas fa-check-circle"></i> Tháo vát</p>
+                    <p><i class="fas fa-check-circle"></i> Nhiệt tình</p>
+                    <p><i class="fas fa-check-circle"></i> Tiếp thu nhanh</p>
+                    <p><i class="fas fa-check-circle"></i> Dễ thích nghi</p>
+                </div>
+            </div>
+            <div>
+                <div class="bg-[#8b5e3b] p-2 rounded-lg text-center text-white">
+                    <h2 class="font-bold"><i class="fas fa-briefcase"></i> KINH NGHIỆM</h2>
+                </div>
+                <div class="mt-4 text-gray-700">
+                    <p><strong>2024-2025</strong></p>
+                    <p><i class="fas fa-cash-register"></i> Thu ngân</p>
+                    <p><i class="fas fa-coffee"></i> Pha chế</p>
+                    <p><i class="fas fa-utensils"></i> Phục vụ</p>
+                </div>
+            </div>
+            <div>
+                <div class="bg-[#c49a6c] p-2 rounded-lg text-center text-white">
+                    <h2 class="font-bold"><i class="fas fa-cogs"></i> KỸ NĂNG</h2>
+                </div>
+                <div class="mt-4 text-gray-700">
+                    <p><i class="fas fa-comments"></i> Giao tiếp</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-[#8b5e3b] h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="mt-2"><i class="fas fa-users"></i> Làm việc nhóm</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-[#8b5e3b] h-2.5 rounded-full" style="width: 60%"></div>
+                    </div>
+                    <p class="mt-2"><i class="fas fa-book-reader"></i> Tự học</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-[#8b5e3b] h-2.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="mt-2"><i class="fas fa-language"></i> Tiếng Anh</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-[#8b5e3b] h-2.5 rounded-full" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadCV() {
+            const element = document.getElementById('cv-content');
+            
+            const opt = {
+                margin: 1,
+                filename: 'CV-NguyenQuocHuy.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'cm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
